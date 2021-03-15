@@ -40,3 +40,13 @@ body {
     background-color: #46C3F2;
     color: white;
 }
+
+.register-switch-label {
+    float: left;
+    width: 50%;
+    line-height: 32px;
+    color: white;
+    text-align: center;
+    text-shadow: 0 -1px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+}
