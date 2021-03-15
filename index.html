@@ -4,13 +4,19 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="./css/style.css">
     <title>Club Vibes</title>
+    <head>
+        <script
+                src="https://code.jquery.com/jquery-3.3.1.js"
+                integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+                crossorigin="anonymous">
+        </script>
+        <script>
+            $(function(){
+                $("#header").load("./included/header.html");
+                $("#footer").load("./included/footer.html");
+            });
+        </script>
+        <div id="header"></div>
+        <div id="footer"></div>
 </head>
-<div>
-    <!--Nav Bar-->
-    <div class="topnav">
-        <img class="logo" src="media/logo.png" alt="logo">
-        <a href="index.php">Home</a>
-        <a href="Berichten.php">Berichten</a>
-        <a href="Matches.php">Matches</a>
-    </div>
 </html>
