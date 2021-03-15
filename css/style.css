@@ -1,3 +1,33 @@
 body {
     background-color: #46C3F2;
 }
+.logo {
+    width: 150px;
+    height: 60%;
+}
+
+.topnav {
+    overflow: hidden;
+    background-color: #46C3F2;
+}
+.topnav a {
+    float: right;
+    display: block;
+    color: black;
+    text-align: center;
+    padding: 20px 16px;
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: bolder;
+}
+
+.topnav a:hover {
+    border-bottom: 3px solid orangered;
+    color: orangered;
+}
+
+.topnav a.active {
+    background-color: white;
+    color: dodgerblue;
+    text-decoration: underline;
+}
