@@ -60,29 +60,29 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             $confirm_password_err = "Het wachtwoord komt niet overeen.";
         }
 
-        // Validate profile picture
-        if(empty(trim($_POST["avatar"]))){
-            $avatar_err = "Voeg een profiel foto toe.";
-        } else{
-            $avatar = trim($_POST["avatar"]);
-        }
+//        // Validate profile picture
+//        if(empty(trim($_POST["avatar"]))){
+//            $avatar_err = "Voeg een profielfoto toe.";
+//        } else{
+//            $avatar = trim($_POST["avatar"]);
+//        }
 
     }
 
     // Check input errors before inserting in database
-    if(empty($username_err) && empty($password_err) && empty($confirm_password_err)&& empty($avatar_err)){
+    if(empty($username_err) && empty($password_err) && empty($confirm_password_err)){
 
         // Prepare an insert statement
-        $sql = "INSERT INTO users (username, password, profile_picture) VALUES (?, ?, ?)";
+        $sql = "INSERT INTO users (username, password) VALUES (?, ?)";
 
         if($stmt = mysqli_prepare($link, $sql)){
             // Bind variables to the prepared statement as parameters
-            mysqli_stmt_bind_param($stmt, "ss", $param_username, $param_password, $param_avatar);
+            mysqli_stmt_bind_param($stmt, "ss", $param_username, $param_password);
 
             // Set parameters
             $param_username = $username;
             $param_password = password_hash($password, PASSWORD_DEFAULT); // Creates a password hash
-            $param_avatar = $avatar;
+//            $param_avatar = $avatar;
 
             // Attempt to execute the prepared statement
             if(mysqli_stmt_execute($stmt)){
@@ -130,11 +130,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             <input type="password" name="confirm_password" class="form-control" value="<?php echo $confirm_password; ?>">
             <span class="help-block"><?php echo $confirm_password_err; ?></span>
         </div>
-        <div class="avatar <?php echo (!empty($avatar_err)) ? 'has-error' : ''; ?>">
-            <label>Selecteer een profiel foto</label>
-            <input type="file" name="avatar" accept="image/*" class="form-control" value="<?php echo $avatar; ?>" required>
-            <span class="help-block"><?php echo $avatar_err; ?></span>
-        </div>
+<!--        <div class="avatar --><?php //echo (!empty($avatar_err)) ? 'has-error' : ''; ?><!--">-->
+<!--            <label>Selecteer een profiel foto</label>-->
+<!--            <input type="file" name="avatar" accept="image/*" class="form-control" value="--><?php //echo $avatar; ?><!--" required>-->
+<!--            <span class="help-block">--><?php //echo $avatar_err; ?><!--</span>-->
+<!--        </div>-->
         <div class="form-group">
             <input type="submit" class="btn btn-primary" value="Submit">
             <input type="reset" class="btn btn-default" value="Reset">
