@@ -18,7 +18,9 @@
             height: 100%;
             position: relative;
             overflow: hidden;
-            background-color: rgb(245, 247, 250);
+            background-color: rgb(192, 234, 255);
+            text-align: center;
+            font-family: SansSerif;
         }
 
         .card {
@@ -36,17 +38,11 @@
 </head>
 
 <body>
-<div id="board"></div>
+<div id="board"> <h1>Swipe Left to like!</h1></div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.min.js"></script>
 <script>
 
     let cards = document.getElementsByClassName('cards');
-
-    function getRandomInt(min, max) {
-        min = Math.ceil(1);
-        max = Math.floor(5);
-        return Math.floor(Math.random() * (max - min + 1)) + min;
-    }
 
     class Carousel {
 
@@ -241,13 +237,18 @@
 
         push() {
 
+            function getRandomInt(min, max) {
+                min = Math.ceil(0);
+                max = Math.floor(5);
+                return Math.floor(Math.random() * (max - min + 1)) + min;
+            }
+
             let card = document.createElement('div')
 
             card.classList.add('card')
 
             card.style.backgroundImage =
-                "url('img/" + getRandomInt() + "')"
-
+                "url('img/" + getRandomInt() + ".jpg')"
             this.board.insertBefore(card, this.board.firstChild)
 
         }
