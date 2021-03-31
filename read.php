@@ -39,7 +39,7 @@
                 <td><?php echo $rows['email']?></td>
                 <td>
                     <a href="update.php?id=<?=$rows['id']?>" class="btn btn-success"> Update
-                    <a href="crud-delete.php?id=<?=$rows['id']?>"  class="btn btn-danger">Verwijder</a>
+                    <a href="crud-delete.php?id=<?=$rows['id']?>" class="btn btn-danger">Verwijder</a>
                 </td>
             </tr>
             <?php } ?>
