@@ -136,7 +136,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             <span class="help-block"><?php echo $avatar_err; ?></span>
         </div>
         <div class="form-group">
-            <input type="submit" class="btn btn-primary" value="Submit">
+            <input type="submit" class="btn btn-primary" value="Versturen">
             <input type="reset" class="btn btn-default" value="Reset">
         </div>
         <p>Heb je al een account? <a href="login.php">Log hier in</a>.</p>
