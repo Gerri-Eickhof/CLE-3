@@ -62,7 +62,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
         // Validate profile picture
         if(empty(trim($_POST["avatar"]))){
-            $avatar_err = "Voeg een profiel foto toe.";
+            $avatar_err = "Voeg een profielfoto toe.";
         } else{
             $avatar = trim($_POST["avatar"]);
         }
@@ -70,14 +70,14 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     }
 
     // Check input errors before inserting in database
-    if(empty($username_err) && empty($password_err) && empty($confirm_password_err)&& empty($avatar_err)){
+    if(empty($username_err) && empty($password_err) && empty($confirm_password_err) && empty($avatar_err)){
 
         // Prepare an insert statement
-        $sql = "INSERT INTO users (username, password, profile_picture) VALUES (?, ?, ?)";
+        $sql = "INSERT INTO users (username, password, avatar) VALUES (?, ?, ?)";
 
         if($stmt = mysqli_prepare($link, $sql)){
             // Bind variables to the prepared statement as parameters
-            mysqli_stmt_bind_param($stmt, "ss", $param_username, $param_password, $param_avatar);
+            mysqli_stmt_bind_param($stmt, "sss", $param_username, $param_password, $param_avatar);
 
             // Set parameters
             $param_username = $username;
@@ -106,13 +106,13 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Sign Up</title>
+    <title>Registreer </title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css">
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 <div class="wrapper">
-    <h2>Sign Up</h2>
+    <h2>Registreer</h2>
     <p>Vult het formulier in om een account te maken.</p>
     <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
         <div class="form-group <?php echo (!empty($username_err)) ? 'has-error' : ''; ?>">
