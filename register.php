@@ -25,7 +25,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
             // Attempt to execute the prepared statement
             if(mysqli_stmt_execute($stmt)){
-                /* store result */
+                // store result
                 mysqli_stmt_store_result($stmt);
 
                 if(mysqli_stmt_num_rows($stmt) == 1){
@@ -116,17 +116,17 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     <p>Vult het formulier in om een account te maken.</p>
     <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
         <div class="form-group <?php echo (!empty($username_err)) ? 'has-error' : ''; ?>">
-            <label>Username</label>
+            <label>Gebruikersnaam</label>
             <input type="text" name="username" class="form-control" value="<?php echo $username; ?>">
             <span class="help-block"><?php echo $username_err; ?></span>
         </div>
         <div class="form-group <?php echo (!empty($password_err)) ? 'has-error' : ''; ?>">
-            <label>Password</label>
+            <label>Wachtwoord</label>
             <input type="password" name="password" class="form-control" value="<?php echo $password; ?>">
             <span class="help-block"><?php echo $password_err; ?></span>
         </div>
         <div class="form-group <?php echo (!empty($confirm_password_err)) ? 'has-error' : ''; ?>">
-            <label>Confirm Password</label>
+            <label>Bevestig wachtwoord</label>
             <input type="password" name="confirm_password" class="form-control" value="<?php echo $confirm_password; ?>">
             <span class="help-block"><?php echo $confirm_password_err; ?></span>
         </div>
@@ -139,7 +139,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             <input type="submit" class="btn btn-primary" value="Submit">
             <input type="reset" class="btn btn-default" value="Reset">
         </div>
-        <p>Already have an account? <a href="login.php">Login here</a>.</p>
+        <p>Heb je al een account? <a href="login.php">Log hier in</a>.</p>
     </form>
 </div>
 </body>
