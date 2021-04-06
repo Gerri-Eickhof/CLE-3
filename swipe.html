@@ -1,17 +1,23 @@
 <!doctype html>
 <html>
-
-<script>
-    $(function(){
-        $("#header").load("./included/header.html");
-        $("#footer").load("./included/footer.html");
-        $("#cards").load("./swipe.html");
-    });
-</script>
 <head>
     <meta charset="utf-8">
-    <title></title>
-    <style>
+    <link rel="stylesheet" href="./css/style.css">
+    <title>Club Vibes</title>
+    <head>
+        <script
+                src="https://code.jquery.com/jquery-3.3.1.js"
+                integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+                crossorigin="anonymous">
+        </script>
+        <script>
+            $(function(){
+                $("#header").load("./included/header.html");
+                $("#footer").load("./included/footer.html");
+            });
+        </script>
+        <div id="header"></div>
+        <style>
         html,
         body {
             width: 100%;
@@ -267,5 +273,5 @@
     let carousel = new Carousel(board)
 </script>
 </body>
-
+<div id="footer"></div>
 </html>
