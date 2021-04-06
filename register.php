@@ -3,8 +3,8 @@
 require_once "included/db-connection.php";
 
 // Define variables and initialize with empty values
-$username = $password = $confirm_password = $avatar = "";
-$username_err = $password_err = $confirm_password_err = $avatar_err = "";
+$username = $email = $password = $confirm_password = $avatar = "";
+$username_err = $email_err = $password_err = $confirm_password_err = $avatar_err = "";
 
 // Processing form data when form is submitted
 if($_SERVER["REQUEST_METHOD"] == "POST"){
@@ -25,7 +25,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
             // Attempt to execute the prepared statement
             if(mysqli_stmt_execute($stmt)){
-                /* store result */
+                // store result
                 mysqli_stmt_store_result($stmt);
 
                 if(mysqli_stmt_num_rows($stmt) == 1){
@@ -40,6 +40,13 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             // Close statement
             mysqli_stmt_close($stmt);
         }
+    }
+
+    // Validate Email
+    if(empty(trim($_POST["email"]))){
+        $email_err = "Vul een email in.";
+    } else{
+        $email = trim($_POST["email"]);
     }
 
     // Validate password
@@ -70,17 +77,18 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     }
 
     // Check input errors before inserting in database
-    if(empty($username_err) && empty($password_err) && empty($confirm_password_err) && empty($avatar_err)){
+    if(empty($username_err) && empty($email_err) && empty($password_err) && empty($confirm_password_err) && empty($avatar_err)){
 
         // Prepare an insert statement
-        $sql = "INSERT INTO users (username, password, avatar) VALUES (?, ?, ?)";
+        $sql = "INSERT INTO users (username, email, password, avatar) VALUES (?, ?, ?, ?)";
 
         if($stmt = mysqli_prepare($link, $sql)){
             // Bind variables to the prepared statement as parameters
-            mysqli_stmt_bind_param($stmt, "sss", $param_username, $param_password, $param_avatar);
+            mysqli_stmt_bind_param($stmt, "ssss", $param_username, $param_email, $param_password, $param_avatar);
 
             // Set parameters
             $param_username = $username;
+            $param_email = $email;
             $param_password = password_hash($password, PASSWORD_DEFAULT); // Creates a password hash
             $param_avatar = $avatar;
 
@@ -116,17 +124,22 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     <p>Vult het formulier in om een account te maken.</p>
     <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
         <div class="form-group <?php echo (!empty($username_err)) ? 'has-error' : ''; ?>">
-            <label>Username</label>
+            <label>Gebruikersnaam</label>
             <input type="text" name="username" class="form-control" value="<?php echo $username; ?>">
             <span class="help-block"><?php echo $username_err; ?></span>
         </div>
+        <div class="form-group <?php echo (!empty($email_err)) ? 'has-error' : ''; ?>">
+            <label>Email adress</label>
+            <input type="email" name="email" class="form-control" value="<?php echo $email; ?>">
+            <span class="help-block"><?php echo $email_err; ?></span>
+        </div>
         <div class="form-group <?php echo (!empty($password_err)) ? 'has-error' : ''; ?>">
-            <label>Password</label>
+            <label>Wachtwoord</label>
             <input type="password" name="password" class="form-control" value="<?php echo $password; ?>">
             <span class="help-block"><?php echo $password_err; ?></span>
         </div>
         <div class="form-group <?php echo (!empty($confirm_password_err)) ? 'has-error' : ''; ?>">
-            <label>Confirm Password</label>
+            <label>Bevestig wachtwoord</label>
             <input type="password" name="confirm_password" class="form-control" value="<?php echo $confirm_password; ?>">
             <span class="help-block"><?php echo $confirm_password_err; ?></span>
         </div>
@@ -136,10 +149,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             <span class="help-block"><?php echo $avatar_err; ?></span>
         </div>
         <div class="form-group">
-            <input type="submit" class="btn btn-primary" value="Submit">
+            <input type="submit" class="btn btn-primary" value="Versturen">
             <input type="reset" class="btn btn-default" value="Reset">
         </div>
-        <p>Already have an account? <a href="login.php">Login here</a>.</p>
+        <p>Heb je al een account? <a href="login.php">Log hier in</a>.</p>
     </form>
 </div>
 </body>
