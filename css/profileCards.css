@@ -3,7 +3,7 @@
     max-width: 300px;
     margin: auto;
     text-align: center;
-    background-color:rgba(70,195,242,1);
+    background-color: rgb(40, 110, 133);
 
 }
 
@@ -37,4 +37,8 @@ p{
 
 button:hover, a:hover {
     opacity: 0.7;
+}
+
+.boldText {
+    font-weight: bold;
 }

@@ -1,7 +1,7 @@
 let cards = document.getElementsByClassName('cards');
+let newDiv;
 
 class Carousel {
-
     constructor(element) {
 
         this.board = element
@@ -199,13 +199,45 @@ class Carousel {
             return Math.floor(Math.random() * (max - min + 1)) + min;
         }
 
-        let card = document.createElement('div')
+        function addCard(guitarist, index){
+            newDiv = document.createElement("div");
+            newDiv.classList.add("card");
 
-        card.classList.add('card')
+            const p1 = document.createElement("p");
+            p1.innerText = "Student aan de HR";
+            newDiv.appendChild(p1);
 
-        card.style.backgroundImage =
-            "url('img/" + getRandomInt() + ".jpg')"
-        this.board.insertBefore(card, this.board.firstChild)
+            const p2 = document.createElement("p");
+            p2.innerText = "Gaat graag op ... uit";
+            newDiv.appendChild(p2);
+
+            const p3 = document.createElement("p");
+            p3.innerText = "Houdt van:";
+            p3.classList.add("boldText");
+            newDiv.appendChild(p3);
+
+            const p4 = document.createElement("p");
+            p4.innerText = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua";
+            newDiv.appendChild(p4);
+
+            const p5 = document.createElement("p");
+            p5.innerText = "Bio:";
+            p5.classList.add("boldText");
+            newDiv.appendChild(p5);
+
+            const p6 = document.createElement("p");
+            p6.innerText = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua";
+            newDiv.appendChild(p6);
+
+        }
+        addCard();
+        // let card = document.createElement('div')
+        //
+        // card.classList.add('card')
+        //
+        // card.style.backgroundImage =
+        //     "url('img/" + getRandomInt() + ".jpg')"
+        this.board.insertBefore(newDiv, this.board.firstChild)
 
     }
 
