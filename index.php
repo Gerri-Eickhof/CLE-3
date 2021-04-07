@@ -1,7 +1,8 @@
 <?php
+session_start();
 // Check if the user is logged in, else send him to login.php
 if(!isset($_SESSION['loggedin'])){ //if login in session is not set
-    header("Location: ./login.php");
+    header("Location: login.php");
 }
 ?>
 <!doctype html>

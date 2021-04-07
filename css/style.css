@@ -45,3 +45,7 @@ body {
 }
 
 .wrapper{ width: 350px; padding: 20px; }
+
+.boldText{
+    font-weight: bold;
+}
