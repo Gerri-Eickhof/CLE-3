@@ -3,7 +3,7 @@ session_start();
 require_once 'included/db-connection.php'; //connecting the db_connection to this file
 ?>
 
-<<!doctype html>
+<!doctype html>
 <html lang="en">
 <head>
     <link rel="stylesheet" href="./css/style.css">
@@ -27,6 +27,6 @@ require_once 'included/db-connection.php'; //connecting the db_connection to thi
     <div id="footer"></div>
 </head>
 <body>
-    <div><h1>je ma</h1></div>
+    <div><h1>Matches</h1></div>
 </body>
 </html>
